@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+}
+
+.mat-row:hover {
+  background-color:#CCE7E7;
+}
+
+.mat-card {
+  padding-left: 30px;
+  padding-right: 30px;
+}

@@ -1,0 +1,6 @@
+<app-contact [contact]='contact' [contactFormGroup]='contactFormGroup'></app-contact>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button mat-primary"(click)="save()" [disabled]="!contactFormGroup.valid">Save</button>
+    <button class="mat-raised-button"(click)="close()">Close</button>
+</mat-dialog-actions>

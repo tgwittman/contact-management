@@ -1,0 +1,143 @@
+<div class="container" *ngIf="contact">
+    <mat-card class="card">
+        <mat-card-header>
+            <img mat-card-avatar src="{{contact.photo}}">
+            <mat-card-title>{{contact.firstName}} {{contact.lastName}}</mat-card-title>
+            <mat-card-subtitle>{{contact.position}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="contactFormGroup">
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <mat-form-field>
+                            <input matInput [(ngModel)]="contact.photo" [ngModelOptions]="{standalone: true}"
+                                placeholder="Contact Photo Url">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <mat-form-field>
+                            <input matInput placeholder="Company" value="Eagle Point Software" disabled>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <mat-form-field>
+                            <input matInput [(ngModel)]="contact.position" placeholder="Position" formControlName="position">
+                            <mat-error *ngIf="contactFormGroup.controls.position.invalid">
+                                Position is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <mat-form-field>
+                            <input matInput [(ngModel)]="contact.firstName" placeholder="First Name" formControlName="firstName">
+                            <mat-error *ngIf="contactFormGroup.controls.firstName.invalid">
+                                First Name is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <mat-form-field>
+                            <input matInput [(ngModel)]="contact.lastName" placeholder="Last Name" formControlName="lastName">
+                            <mat-error *ngIf="contactFormGroup.controls.lastName.invalid">
+                                Last Name is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+
+                <div formGroupName="address">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <mat-form-field class="full-half">
+                                <textarea matInput [(ngModel)]="contact.address.street" placeholder="Address"
+                                    formControlName="street"></textarea>
+                                <mat-error *ngIf="contactFormGroup.controls.address.controls.street.invalid">
+                                    Street address is required.
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <mat-form-field>
+                                <input matInput [(ngModel)]="contact.address.city" placeholder="City" formControlName="city">
+                                <mat-error *ngIf="contactFormGroup.controls.address.controls.city.invalid">
+                                    City is required.
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <mat-form-field>
+                                <input matInput [(ngModel)]="contact.address.state" placeholder="State" formControlName="state">
+                                <mat-error *ngIf="contactFormGroup.controls.address.controls.state.invalid">
+                                    State is required.
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <mat-form-field>
+                                <input matInput [(ngModel)]="contact.address.zip" placeholder="Postal Code"
+                                    formControlName="zip" #postalCode minlength="5">
+                                <mat-error *ngIf="contactFormGroup.controls.address.controls.zip.invalid">
+                                    {{postalCode.value.length}} / 5
+                                </mat-error>
+                                <mat-hint *ngIf="contactFormGroup.controls.address.controls.zip.valid">
+                                    {{postalCode.value.length}} / 5
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <mat-form-field>
+                            <input matInput [(ngModel)]="contact.email" placeholder="Email" formControlName="email">
+                            <mat-error *ngIf="contactFormGroup.controls.email.invalid">
+                                Please enter a valid email address
+                            </mat-error>
+                        </mat-form-field>
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <mat-form-field>
+                            <span matPrefix>+1 &nbsp;</span>
+                            <input matInput [(ngModel)]="contact.phone" type="tel" placeholder="Phone" formControlName="phone">
+                            <mat-icon matSuffix>mode_edit</mat-icon>
+                            <mat-error *ngIf="contactFormGroup.controls.phone.invalid">
+                                Phone is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <mat-form-field>
+                            <input matInput [(ngModel)]="contact.twitter" [ngModelOptions]="{standalone: true}"
+                                placeholder="Twitter">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <mat-form-field>
+                            <input matInput [(ngModel)]="contact.facebook" [ngModelOptions]="{standalone: true}"
+                                placeholder="Facebook">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+</div>

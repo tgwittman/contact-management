@@ -1,0 +1,6 @@
+<app-contact [contact]='contact' [contactFormGroup]='contactFormGroup'></app-contact>
+<div class="container">
+    <button class="addContactButton" mat-raised-button color="primary" (click)="addContact()" [disabled]="contactFormGroup.invalid">Add
+        contact</button>
+    <button mat-stroked-button color="primary" (click)="goBack()">Cancel</button>
+</div>
